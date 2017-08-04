@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleCalculator_Console
 {
@@ -10,24 +6,37 @@ namespace SimpleCalculator_Console
     {
         static void Main(string[] args)
         {
-            string s_someText = "Here is some text";
-            int i_number = 10;
-            double d_number = 10.5;
-            float f_number = 10.6f;
-            bool b_isOrdered = true;
-            string s_input = Console.ReadLine();
-            var v_anyVariable = 10.7;
+            string s_someText = "Here is Some text";
+            string s_someMoreText = "Here is some text";
 
-            Console.WriteLine(s_someText);
-            Console.WriteLine(i_number);
-            Console.WriteLine(d_number);
-            Console.WriteLine(f_number);
-            Console.WriteLine(b_isOrdered);
-            Console.WriteLine(s_input);
-            Console.WriteLine(v_anyVariable);
+            // using ordinal case for string comparison is faster
+            bool b_isEqual = s_someText.Equals(s_someMoreText, StringComparison.Ordinal);
 
-            return;
-            // ToDo: Clear this and continue from Section 2 Lecture 9
+            string s_addedText = s_someText + " " + s_someMoreText + " here is some more text.";
+            string s_formattedString = string.Format("{0} {1} here is some more text.", s_someText, s_someMoreText);
+
+            Console.WriteLine(s_addedText);
+            Console.WriteLine(s_formattedString);
+
+            Console.WriteLine(s_someText.Length);
+            Console.WriteLine(s_someText[8]);
+
+            Console.WriteLine(s_someText.Substring(8, 4));
+
+            Console.WriteLine(s_someText.ToLower());
+            Console.WriteLine(s_someText.ToUpper());
+
+            string s_anotherText = string.Empty;
+            string s_replacedText = s_someText.Replace("text", "string");
+
+            Console.WriteLine(s_replacedText);
+
+
+            /* Keep the console window open til user applies input */
+#if DEBUG
+            Console.WriteLine("Press enter to close...");
+            Console.ReadLine();
+            #endif
         }
     }
 }
