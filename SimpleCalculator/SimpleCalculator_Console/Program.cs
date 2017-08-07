@@ -6,15 +6,15 @@ namespace SimpleCalculator_Console
     {
         static void Main(string[] args)
         {
-            // non static
-            Person person1 = new Person();
+            // Exceptions
+            string s_input = Console.ReadLine();
+            int n_convertedNumber;
+            bool b_isConverted = int.TryParse(s_input, out n_convertedNumber);
 
-            Console.WriteLine(person1.getAge());
-            person1.setAge(27);
-            Console.WriteLine(person1.getAge());
-
-            // static
-            Person.greet();
+            if (!b_isConverted)
+            {
+                throw new Exception("Conversion failed...");
+            }
 
             /* Keep the console window open til user applies input */
 #if DEBUG
