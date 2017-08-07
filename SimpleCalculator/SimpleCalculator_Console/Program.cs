@@ -2,25 +2,39 @@
 
 namespace SimpleCalculator_Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            // Exceptions
-            string s_input = Console.ReadLine();
-            int n_convertedNumber;
-            bool b_isConverted = int.TryParse(s_input, out n_convertedNumber);
-
-            if (!b_isConverted)
+            // Try, Catch, Finally
+            try
             {
-                throw new Exception("Conversion failed...");
+                // Exceptions
+                string s_input = Console.ReadLine();
+                try
+                {
+                    StringToIntConverter stringToIntConverter = new StringToIntConverter();
+                    stringToIntConverter.convert(s_input);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("There was an error with conversion: {0}", ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was an error: {0}", ex.Message);
+            }
+            finally /* frees up any unmanaged resources whether that catch ran or not */
+            {
+                Console.WriteLine("The rest of this application is still running.");
             }
 
             /* Keep the console window open til user applies input */
 #if DEBUG
             Console.WriteLine("Press enter to close...");
             Console.ReadLine();
-            #endif
+#endif
         }
     }
 }
