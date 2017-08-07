@@ -33,7 +33,7 @@ namespace SimpleCalculator_Console
 
 
             /* Keep the console window open til user applies input */
-#if DEBUG
+            #if DEBUG
             Console.WriteLine("Press enter to close...");
             Console.ReadLine();
             #endif
