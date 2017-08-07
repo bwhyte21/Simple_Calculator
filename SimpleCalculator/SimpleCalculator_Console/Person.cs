@@ -17,5 +17,11 @@ namespace SimpleCalculator_Console
         {
             n_age = n_newAge;
         }
+
+        static public void greet()
+        {
+            // Console methods are static
+            Console.WriteLine("Hello");
+        }
     }
 }
