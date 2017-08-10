@@ -2,32 +2,27 @@
 
 namespace SimpleCalculator_Console
 {
-    internal class Program
+    class Program
     {
-        private static void Main(string[] args)
+        static void Main(string[] args)
         {
-            // Try, Catch, Finally
             try
             {
-                // Exceptions
-                string s_input = Console.ReadLine();
-                try
-                {
-                    StringToIntConverter stringToIntConverter = new StringToIntConverter();
-                    stringToIntConverter.convert(s_input);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("There was an error with conversion: {0}", ex.Message);
-                }
+                InputConverter ic_inputConverter = new InputConverter();
+                CalculatorEngine ce_calculatorEngine = new CalculatorEngine();
+
+                double d_firstNo = ic_inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double d_secondNo = ic_inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                string s_operation = Console.ReadLine();
+
+                double d_result = ce_calculatorEngine.Calculate(s_operation, d_firstNo, d_secondNo);
+
+                Console.WriteLine(d_result);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("There was an error: {0}", ex.Message);
-            }
-            finally /* frees up any unmanaged resources whether that catch ran or not */
-            {
-                Console.WriteLine("The rest of this application is still running.");
+                // In the real world, we'd want to log this message
+                Console.WriteLine(ex.Message);
             }
 
             /* Keep the console window open til user applies input */
